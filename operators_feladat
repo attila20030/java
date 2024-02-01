@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+
+public class operators {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //Bekérések(String,Char,Int,Double)
+        System.out.print("Kérem, adjon meg egy sztringet: ");
+        String inputString = scanner.nextLine();
+
+        System.out.print("Kérem, adjon meg az első karaktert: ");
+        char char1 = scanner.next().charAt(0);
+
+        System.out.print("Kérem, adjon meg a második karaktert: ");
+        char char2 = scanner.next().charAt(0);
+
+        System.out.print("Kérem, adjon meg egy egész számot: ");
+        int int1 = scanner.nextInt();
+
+        System.out.print("Kérem, adjon meg egy másik egész számot: ");
+        int int2 = scanner.nextInt();
+
+        System.out.print("Kérem, adjq meg az első tizedes számot: ");
+        double double20 = scanner.nextDouble();
+
+        System.out.print("Kérem, adja meg a második tizedes számot: ");
+        double double21 = scanner.nextDouble();
+
+
+        //Müveletek a bekért adatokkal
+        String eredmenyString = inputString + char1 + char2;
+        System.out.println("1. Sztringhez adja hozzá a két karaktert: " + eredmenyString);
+
+        double resultDivision = (double) int1 / int2;
+        System.out.println("2. Ossza el a két integert: " + resultDivision);
+
+        double resultSum = double20 + double21;
+        System.out.println("3. Adja össze a két tizedes számot: " + resultSum);
+
+        double resultSubtraction = int1 - double21;
+        System.out.println("4. Vonja ki az egyik integert a double számtól: " + resultSubtraction);
+
+        double resultMultiplication = int2 * double20;
+        System.out.println("5. Szorozza össze a másik integert és double számot: " + resultMultiplication);
+
+    }
+}
