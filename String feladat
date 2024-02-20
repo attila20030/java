@@ -1,0 +1,35 @@
+import java.lang.annotation.Target;
+import java.util.Scanner;
+
+public class Stringek {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+            System.out.print("Kérem, adjon meg a vezetéknevét: ");
+            String vnev = sc.nextLine();    
+
+            System.out.print("Kérem, adjon meg a keresztnevét: ");
+            String knev = sc.nextLine();  
+
+            System.out.print("Kérem, adja meg a születésihelyét: ");
+            String szhely = sc.nextLine();  
+
+            System.out.print("Kérem adja meg az életkorát: ");
+            int kor = sc.nextInt();
+
+            String fullname = vnev + knev;
+            System.out.println(fullname.toUpperCase());
+
+            String txt = ("Keresztnev indexe:");
+            System.out.println(txt.indexOf(knev));
+
+            System.out.println(fullname.toLowerCase() + szhely.toLowerCase());
+
+            System.out.println(kor + fullname + szhely );
+
+            System.out.println(knev.startsWith("A"));
+
+            System.out.println(vnev.endsWith("t"));
+
+            System.out.println(fullname.replace(target:"i",replacement:"y"));   
+        }
+    }
