@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+
+public class IFfeladat1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Kérem adjon meg egy számot: ");
+        int szam1 = sc.nextInt();
+
+        System.out.println("Kérem adja meg a második számot: ");
+        int szam2 = sc.nextInt();
+
+        if(szam1 > szam2){
+            System.out.println("Az első szám a nagyobb!");
+        }
+        else if(szam2 > szam1){
+            System.out.println("A második szám a nagyobb!");
+        }
+        else{
+            System.out.println("A két szám egyenlő!");
+        }
+    }
+}
