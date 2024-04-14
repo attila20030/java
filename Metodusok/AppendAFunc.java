@@ -1,6 +1,6 @@
 public class AppendAFunc{
     public static void main(String[] args) {
-        String[] tomb1 = {"Körte","Szőlő","Meggy","Dinnye"};
+        String[] tomb1 = {"koal", "pand", "zebr", "anacond", "bo", "chinchill", "cobr", "gorill", "hyen", "hydr", "iguan", "impal", "pum", "tarantul", "piranh"};
         String[] newArray = appendA(tomb1);
         
         
@@ -16,3 +16,4 @@ public class AppendAFunc{
         return array;
     }
 }
+
