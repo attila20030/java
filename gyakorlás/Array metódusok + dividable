@@ -1,0 +1,84 @@
+import java.util.Arrays;
+
+public class PartyArrasAndDividable{
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(add(new int[] {1,2,0,4,5}, 3)).equals("[1, 2, 3, 4, 5]"));
+        System.out.println(Arrays.toString(add(new int[] {1,0,0,4,5}, 3)).equals("[1, 3, 0, 4, 5]"));
+        System.out.println(Arrays.toString(add(new int[] {}, 3)).equals("[3]"));
+        System.out.println(Arrays.toString(add(new int[] {1,2,3,4,5}, 6)).equals("[1, 2, 3, 4, 5, 6]"));
+        System.out.println(Arrays.toString(addToIndex(new int[] {1,2,3,4,5}, 0, 6)).equals("[6, 2, 3, 4, 5]"));
+        System.out.println(Arrays.toString(addToIndex(new int[] {1,2,3,4,5}, 2, 6)).equals("[1, 2, 6, 4, 5]"));
+        System.out.println(Arrays.toString(addToIndex(new int[] {1,2,3,4,5}, 6, 2)).equals("[1, 2, 3, 4, 5, 2]"));
+        System.out.println(Arrays.toString(remove(new int[] {1,2,3,2,1}, 5)).equals("[1, 2, 3, 2, 1]"));
+        System.out.println(Arrays.toString(remove(new int[] {1,2,3,2,1}, 2)).equals("[1, 3, 2, 1]"));
+        System.out.println(Arrays.toString(remove(new int[] {1,2,3,2,1}, 3)).equals("[1, 2, 2, 1]"));
+        System.out.println(Arrays.toString(removeByIndex(new int[] {1,2,3,4,5}, 5)).equals("[1, 2, 3, 4, 5]"));
+        System.out.println(Arrays.toString(removeByIndex(new int[] {1,2,3,4,5}, 3)).equals("[1, 2, 3, 5]"));
+        System.out.println(Arrays.toString(removeByIndex(new int[] {}, 5)).equals("[]"));
+        System.out.println("Dividable");
+    }
+
+
+    public static int dividable(int num, int fizz, int buzz) {
+        int eredmeny= -1;
+        if (num % fizz == 0) eredmeny = fizz;
+        if (num % buzz == 0)
+            eredmeny = (eredmeny == -1) ? buzz : fizz * buzz;
+        return eredmeny;
+    }
+
+    public static int[] add(int[] arr, int num) {
+        boolean hozzaad = false;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                arr[i] = num;
+                hozzaad = true;
+                break;
+            }
+        }
+        if (!hozzaad) {
+            int[] eredmeny = Arrays.copyOf(arr, arr.length + 1);
+            eredmeny[arr.length] = num;
+            arr = eredmeny;
+        }
+        return arr;
+    }
+
+    public static int[] addToIndex(int[] arr, int index, int num) {
+        if (arr.length > index)
+            arr[index] = num;
+        else {
+            int[] eredmeny = Arrays.copyOf(arr, arr.length + 1);
+            eredmeny[arr.length] = num;
+            arr = eredmeny;
+        }
+        return arr;
+    }
+
+    public static int[] remove(int[] arr, int num) {
+        int[] eredmeny = arr;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                eredmeny = removeByIndex(arr, i);
+                break;
+            }
+        }
+        return eredmeny;
+    }
+
+    public static int[] removeByIndex(int[] arr, int index)  {
+        int[] eredmeny;
+        if (arr.length > index) {
+            eredmeny = new int[arr.length - 1];
+            int j = 0;
+            for (int i = 0; i < arr.length ; i++) {
+                if (i == index) continue;
+                eredmeny[j++] = arr[i];
+            }
+        } else {
+            eredmeny = arr;
+        }
+        return eredmeny;
+    }
+}
