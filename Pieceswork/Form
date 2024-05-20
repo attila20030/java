@@ -1,0 +1,107 @@
+import tkinter as tk # widgetek megjelenítése ,elhelyezése és vezérlése
+from tkinter import ttk # keret,cimke elhelyezése
+import flet as ft
+
+
+def ellenoriz_form():
+    
+
+    nev1 = nev1.get()
+    email = email.get()
+    neme = neme.get()
+    elofizet = elofizet.get()
+    varos = varos.get()
+
+
+    if not nev1 or not email:
+        eredmeny_text.set("A mezőt töltsd ki mert kötelező!")
+        return
+    if '@' not in email or '.' not in email:
+        eredmeny_text.set("Olyan E-mail címet adj meg ami tartalmaz @ -ot illetve . -ot")
+        return
+
+    # A megadott adatok kiírása a Text mezőbe
+    eredmeny_text.set(f"Teljesnev: {nev1}\n"
+                    f"Email: {email}\n"
+                    f"Nem: {neme}\n"
+                    f"Előfizetés: {elofizet}\n"
+                    f"Ország: {varos}")
+    
+
+felhasznalo = tk.Tk()
+felhasznalo.title("Form")
+
+
+fejlec = ttk.Frame(felhasznalo)
+fejlec.pack(padx=20)
+fejlec.pack(pady=40)
+
+
+title_label = ttk.Label(fejlec,
+                        text="Form",
+                        background="lightblue",
+                        width="50",
+                        font="Arial",
+                        )
+title_label.pack()
+
+
+form_frame = ttk.Frame(felhasznalo)
+form_frame.pack(padx=20)
+
+vnev_label = ttk.Label(form_frame,
+                    text="Név:",
+                    background="lightblue") #Név
+
+vnev_label.grid(row=0, column=0, sticky="w")
+vnev_entry = ttk.Entry(form_frame)
+vnev_entry.grid(row=0, column=1)
+
+
+email_label = ttk.Label(form_frame, 
+                    text="Email:",
+                    background="lightblue") #Email
+
+email_label.grid(row=1, column=0, sticky="w")
+email_entry = ttk.Entry(form_frame)
+email_entry.grid(row=1, column=1)
+
+
+nem_label = ttk.Label(form_frame, text="Nem:",
+                    background="lightblue")
+nem_label.grid(row=2, column=0, sticky="w")
+nem_var = tk.StringVar()
+male_radio = ttk.Radiobutton(form_frame, text="Férfi", variable=nem_var, value="Férfi") #Nem kiválasztás Radio gombbal
+male_radio.grid(row=2, column=1, sticky="w")
+female_radio = ttk.Radiobutton(form_frame, text="Nő", variable=nem_var, value="Nő")
+female_radio.grid(row=2, column=2, sticky="w")
+
+
+elofizet_label = ttk.Label(form_frame, text="Előfizetés:", background="lightblue")
+elofizet_label.grid(row=3, column=0, sticky="w")
+elofizet_var = tk.BooleanVar()
+elofizet_switch = ttk.Checkbutton(form_frame, variable=elofizet_var, onvalue=True, offvalue=False)
+elofizet_switch.grid(row=3, column=1, sticky="w")
+
+varos_label = ttk.Label(form_frame, text="Kérem válassza ki az országot:", background="lightblue")
+varos_label.grid(row=4,sticky="w")
+valaszthato_varosok = ["Magyarország", "Svéd ország", "USA", "Kína", "Dél-korea","Horvátország","Franciaország"]
+varos_var = tk.StringVar()
+varos_dropdown = ttk.Combobox(form_frame, textvariable=varos_var, values=valaszthato_varosok)
+varos_dropdown.grid(row=4, column=1, sticky="w")
+
+
+submit_button = ttk.Button(felhasznalo, text="Beküldés", command=ellenoriz_form) # Gomb
+submit_button.pack()
+
+
+eredmeny_text = tk.StringVar()
+eredmeny_label = ttk.Label(felhasznalo, textvariable=eredmeny_text) # Eredmény kiírása
+eredmeny_label.pack(pady=10)
+
+
+
+felhasznalo.mainloop()
+#Megjelenítés 
+
+
