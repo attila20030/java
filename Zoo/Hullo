@@ -1,0 +1,30 @@
+package zoo;
+
+public class Hullo extends Animal {
+    boolean isLandAnimal;
+    String sound;
+
+    @Override
+    String breed(){
+        return this.breed();
+    }
+
+    @Override
+    void sound(){
+        System.out.println(this.sound + " " + this.sound);
+    }
+
+    @Override
+    boolean isLandAnimal() {
+        return true;
+    }
+
+
+    public void setSound(String sound){
+        this.sound = sound;
+    }
+
+    public void setLandAnima(boolean isLandAnimal){
+        this.isLandAnimal = isLandAnimal;
+    }
+}
