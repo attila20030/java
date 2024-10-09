@@ -1,0 +1,71 @@
+package flyable;
+
+import flyable.zoo.Bird;
+
+public class Main {
+    public static void main(String[] args) {
+        Helicopter h = new Helicopter("Apache AC-126", 450, false);
+        Helicopter th = new Helicopter("Monster A1", 400, true);
+
+        System.out.println(h);
+        h.setLand(true);
+        System.out.println(h.fly());
+
+        Bird g = new Bird("Meme_cat","huh?",1);
+        System.out.println(g);
+    }
+}
+
+package flyable;
+
+public class Helicopter extends Vehicle implements Flyable{
+    boolean isLand;
+    public Helicopter(String type, int speed, boolean isTruck){
+        this.type = type;
+        this.speed = speed;
+        this.isTruck = isTruck;
+    }
+
+    public void setLand(boolean land){
+        this.isLand = land;
+    }
+
+    @Override
+    public boolean land(){
+        return false;
+    }
+
+    @Override
+    public String fly(){
+        if(isLand){
+            return "Helicopter is out of use";
+        }
+        else{
+            return "Helicopter flies.";
+        }
+        
+    }
+
+    @Override
+    public void takeOff(){
+        System.out.println("Helicopter is taking off.");
+        this.isLand = false;
+    }
+
+    @Override
+    public String toString() {
+        return "Helicopter [speed=" + speed + ", isTruck=" + isTruck + ", isLand=" + isLand + ", type=" + type
+                + ", land()=" + land() + ", fly()=" + fly() + ", getClass()=" + getClass() + ", hashCode()="
+                + hashCode() + ", toString()=" + super.toString() + "]";
+    }
+    
+    
+}
+
+package flyable;
+
+public abstract class Vehicle {
+    int speed;
+    boolean isTruck;
+    String type;
+}
